@@ -336,13 +336,13 @@ export default function App() {
             ref={navContainerRef}
             initial={false}
             animate={{ 
-              maxWidth: isScrolled ? '1320px' : '1520px',
+              maxWidth: isScrolled ? '1320px' : '1520.99px',
             }}
             transition={{ 
               duration: 0.4, 
               ease: [0.16, 1, 0.3, 1] 
             }}
-            className={`pointer-events-auto w-full h-[58px] rounded-full relative flex items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`pointer-events-auto w-full h-[70px] rounded-full relative flex items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isScrolled 
                 ? 'px-4 sm:px-6 bg-white/85 backdrop-blur-2xl shadow-[0_2px_12px_rgba(15,23,42,0.03)] border border-slate-200/70' 
                 : 'px-5 sm:px-7 bg-white/75 backdrop-blur-xl shadow-[0_2px_8px_rgba(15,23,42,0.02)] border border-slate-200/50'
@@ -394,7 +394,7 @@ export default function App() {
             <div className="hidden lg:flex items-center justify-center min-w-0 flex-1 px-2 sm:px-4">
               <div 
                 ref={linksContainerRef} 
-                className="relative flex items-center gap-1.5 sm:gap-2 xl:gap-3 max-w-full overflow-x-auto hide-scrollbar py-1 px-1.5"
+                className="relative flex items-center gap-1.5 sm:gap-2 xl:gap-3 max-w-full overflow-x-auto hide-scrollbar py-1 pr-1.5 pl-[43px]"
               >
                 {/* Nav Brand Links */}
                 <button
