@@ -733,7 +733,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className={`absolute top-6 right-6 z-20 bg-zinc-900/90 backdrop-blur-xl border border-white/20 px-3.5 py-2 rounded-full text-white font-sans text-xs font-bold tracking-wider uppercase ${isLoggedIn ? 'flex' : 'flex sm:hidden'} items-center gap-1.5 shadow-sm`}>
+                <div className={`absolute top-6 right-6 z-20 bg-zinc-900/90 backdrop-blur-xl border border-white/20 px-3.5 py-2 rounded-full text-white font-sans text-xs font-bold tracking-wider uppercase ${isLoggedIn ? 'flex' : 'hidden sm:hidden'} items-center gap-1.5 shadow-sm`}>
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span className="hidden sm:inline">VIP Pass Active</span>
                   <span className="sm:hidden">VIP</span>
