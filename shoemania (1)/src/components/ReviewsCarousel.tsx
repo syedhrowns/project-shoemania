@@ -151,7 +151,7 @@ export function ReviewsCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto h-[450px] flex items-center justify-center overflow-hidden py-10 mt-8 cursor-default select-none pointer-events-none">
+    <div className="relative w-full max-w-6xl mx-auto h-[450px] flex items-center justify-center overflow-visible py-10 px-8 mt-8 cursor-default select-none">
       {reviews.map((item, idx) => {
         const styles = getCardStyles(idx);
         const isCenter = (idx - currentIndex + reviews.length) % reviews.length === 0;
