@@ -49,6 +49,12 @@ const heroImages = [
 ];
 
 export default function App() {
+   const [windowWidth, setWindowWidth] = useState(() => (typeof window !== 'undefined' ? window.innerWidth : 1200));
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [activeBrand, setActiveBrand] = useState<Brand | 'All' | 'About' | 'Hero'>('All');
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -326,7 +332,7 @@ export default function App() {
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   const layout = (
-    <div className="min-h-screen flex flex-col relative z-0 bg-white">
+    <div className="min-h-screen flex flex-col relative z-0 bg-white overflow-x-hidden">
       
 
       {/* Navigation: Floating Responsive Luxury Pill Header */}
@@ -336,7 +342,7 @@ export default function App() {
             ref={navContainerRef}
             initial={false}
             animate={{ 
-              maxWidth: isScrolled ? '1320px' : '1520.99px',
+              maxWidth: windowWidth < 1024 ? '100%' : (isScrolled ? '1320px' : '1520.99px'),
             }}
             transition={{ 
               duration: 0.4, 
