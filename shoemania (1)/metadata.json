@@ -1,0 +1,6 @@
+{
+  "name": "ShoeMania",
+  "description": "A professional and minimal e-commerce store for Nike and Adidas shoes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
