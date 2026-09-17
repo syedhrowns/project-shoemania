@@ -49,12 +49,13 @@ const heroImages = [
 ];
 
 export default function App() {
-   const [windowWidth, setWindowWidth] = useState(() => (typeof window !== 'undefined' ? window.innerWidth : 1200));
+  const [windowWidth, setWindowWidth] = useState(() => (typeof window !== 'undefined' ? window.innerWidth : 1200));
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [activeBrand, setActiveBrand] = useState<Brand | 'All' | 'About' | 'Hero'>('All');
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -336,22 +337,23 @@ export default function App() {
       
 
       {/* Navigation: Floating Responsive Luxury Pill Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-5 sm:py-6 pointer-events-none flex justify-center">
-        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 flex justify-center">
+      <header className="fixed top-0 left-0 right-0 z-50 py-4 sm:py-6 pointer-events-none flex justify-center w-full px-4 sm:px-6">
+        <div className="w-full max-w-[1520px] flex justify-center">
           <motion.nav 
             ref={navContainerRef}
             initial={false}
             animate={{ 
-              maxWidth: windowWidth < 1024 ? '100%' : (isScrolled ? '1320px' : '1520.99px'),
+              width: isScrolled ? '100%' : '100%',
+              maxWidth: isScrolled ? '1320px' : '1520px',
             }}
             transition={{ 
               duration: 0.4, 
               ease: [0.16, 1, 0.3, 1] 
             }}
-            className={`pointer-events-auto w-full h-[70px] rounded-full relative flex items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`pointer-events-auto w-full min-h-[64px] sm:min-h-[70px] rounded-[2rem] sm:rounded-full relative flex flex-wrap sm:flex-nowrap items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isScrolled 
-                ? 'px-4 sm:px-6 bg-white/85 backdrop-blur-2xl shadow-[0_2px_12px_rgba(15,23,42,0.03)] border border-slate-200/70' 
-                : 'px-5 sm:px-7 bg-white/75 backdrop-blur-xl shadow-[0_2px_8px_rgba(15,23,42,0.02)] border border-slate-200/50'
+                ? 'px-4 sm:px-6 py-2 bg-white/85 backdrop-blur-2xl shadow-[0_2px_12px_rgba(15,23,42,0.03)] border border-slate-200/70' 
+                : 'px-5 sm:px-7 py-2 bg-white/75 backdrop-blur-xl shadow-[0_2px_8px_rgba(15,23,42,0.02)] border border-slate-200/50'
             }`}
           >
             {/* Left: Brand Logo & Morphing Name */}
@@ -633,7 +635,7 @@ export default function App() {
                     <span className="text-zinc-500">SNEAKER</span> <br />
                     DESTINATION.
                   </h1>
-                  <p className="-mt-[7px] sm:mt-0 text-sm sm:text-base leading-[22px] text-center lg:text-left text-zinc-600 mb-7 max-w-md font-sans mx-auto lg:mx-0">
+                  <p className="text-sm sm:text-base leading-relaxed text-center lg:text-left text-zinc-600 mb-8 max-w-md font-sans mx-auto lg:mx-0">
                     Curated releases and timeless icons from the world's most sought-after brands.
                   </p>
                   <div className="flex justify-center lg:justify-start">
@@ -643,14 +645,14 @@ export default function App() {
                       onClick={() => {
                         document.getElementById('products-top')?.scrollIntoView({ behavior: 'smooth' });
                       }}
-                      className="inline-flex items-center justify-center gap-2 bg-zinc-900 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-sans text-xs sm:text-sm font-bold tracking-wider uppercase hover:bg-zinc-800 transition-all shadow-none border-none whitespace-nowrap"
+                      className="inline-flex items-center justify-center gap-2 bg-zinc-900 text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-sans text-xs sm:text-sm font-bold tracking-wider uppercase hover:bg-zinc-800 transition-all shadow-none border-none"
                     >
                       Shop Collection <ArrowRight className="w-3.5 h-3.5" />
                     </motion.button>
                   </div>
 
                   {/* Minimal Trust Features */}
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-5 text-zinc-500 text-xs sm:text-[13px] font-medium mt-8 pt-[7px] pr-0 mx-auto lg:mx-0 lg:ml-[50px] lg:mr-0 border-t border-[#ffffff] w-full max-w-lg">
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-3 gap-x-5 text-zinc-500 text-xs sm:text-[13px] font-medium mt-10 pt-4 border-t border-zinc-100 w-full max-w-lg mx-auto lg:mx-0 lg:ml-12 lg:mr-0">
                     <div className="flex items-center gap-1.5">
                       <Truck className="w-3.5 h-3.5 text-zinc-800" />
                       <span>Free Shipping</span>
@@ -674,7 +676,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-              className="relative block h-[280px] sm:h-[380px] lg:h-[460px] xl:h-[500px] w-full group mt-6 lg:mt-0"
+              className="relative block aspect-square sm:aspect-[4/3] lg:aspect-[4/5] xl:aspect-[3/4] max-h-[650px] w-full group mt-6 lg:mt-0"
             >
               <div className="absolute inset-0 rounded-[3rem] overflow-hidden shadow-md bg-zinc-100 border border-zinc-200/60">
                 {/* Underlying base image to prevent black screen flashes */}
@@ -794,7 +796,7 @@ export default function App() {
                       </div>
                     </div>
                     
-                    <div className="flex flex-col gap-4 md:h-[850px]">
+                    <div className="flex flex-col gap-4 md:min-h-[600px] lg:min-h-[850px]">
                       {/* Top Row */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row gap-4 md:flex-1 md:hover:flex-[3] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
                         {[
@@ -866,7 +868,7 @@ export default function App() {
                             
                             <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
                               <div className="bg-black/40 md:bg-black/30 backdrop-blur-xl border border-white/20 md:border-white/10 px-6 sm:px-8 py-5 min-w-fit rounded-3xl flex flex-col items-center gap-3 transition-all duration-500 delay-0 group-hover:delay-[300ms] opacity-100 sm:opacity-0 sm:group-hover:opacity-100 group-hover:scale-105 shadow-xl">
-                                <h3 className="text-white font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tight uppercase text-center leading-tight whitespace-nowrap drop-shadow-sm">{brand.title}</h3>
+                                <h3 className="text-white font-display text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tight uppercase text-center leading-tight drop-shadow-sm">{brand.title}</h3>
                                 <button className="px-5 py-2 bg-white/20 md:bg-white/10 backdrop-blur-lg border border-white/30 md:border-white/20 text-white shadow-xl rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:bg-white/20 active:scale-95">
                                   Shop Now
                                 </button>
@@ -897,7 +899,7 @@ export default function App() {
                     </div>
                   </div>
           
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row items-center gap-6 md:gap-8 md:h-[550px]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row items-center gap-6 md:gap-8 md:min-h-[400px] lg:min-h-[550px]">
                     {[
                       { name: 'DIOR 1 HIGH', year: '2020', price: '$7,500', bg: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=800' },
                       { name: 'TS DUNK LOW', year: '2020', price: '$2,100', bg: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800' },
@@ -909,7 +911,7 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "0px" }}
                         transition={{ duration: 0.6, delay: 0.2 + (index * 0.1) }}
-                        className="relative w-full h-[300px] sm:h-[360px] md:h-[450px] md:hover:h-[550px] flex-none md:flex-1 md:hover:flex-[3.5] transition-all duration-700 md:duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-2xl md:rounded-[2rem] overflow-hidden group cursor-pointer shadow-sm md:shadow-none bg-zinc-900 snap-center"
+                        className="relative w-full h-[300px] sm:h-[360px] md:h-[450px] md:hover:min-h-[400px] lg:min-h-[550px] flex-none md:flex-1 md:hover:flex-[3.5] transition-all duration-700 md:duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-2xl md:rounded-[2rem] overflow-hidden group cursor-pointer shadow-sm md:shadow-none bg-zinc-900 snap-center"
                       >
                         <img 
                           src={grail.bg} 
@@ -927,7 +929,7 @@ export default function App() {
                         
                         <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
                           <div className="bg-black/40 md:bg-black/30 backdrop-blur-xl border border-white/20 md:border-white/10 px-6 sm:px-8 py-5 min-w-fit rounded-3xl flex flex-col items-center justify-center gap-3 transition-all duration-500 delay-0 group-hover:delay-[300ms] opacity-100 sm:opacity-0 sm:group-hover:opacity-100 group-hover:scale-105 shadow-xl">
-                            <h3 className="text-white font-display text-xl md:text-2xl font-bold tracking-tight text-center leading-tight uppercase drop-shadow-sm whitespace-nowrap">
+                            <h3 className="text-white font-display text-xl md:text-2xl font-bold tracking-tight text-center leading-tight uppercase drop-shadow-sm">
                               {grail.name}
                             </h3>
                             
@@ -1336,7 +1338,7 @@ export default function App() {
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-900 tracking-tight uppercase drop-shadow-sm mb-4">
                 {isLoggedIn ? 'VAULT RESERVATIONS' : 'RELEASE CALENDAR'}
               </h2>
-              <p className="text-zinc-600 font-sans font-medium text-[17px] leading-[21px] -mt-[5px]">
+              <p className="text-zinc-600 font-sans font-medium text-[17px] leading-[21px] mt-0">
                 {isLoggedIn ? 'Your VIP tier grants you priority reservations. Secure your pair before the public drop.' : 'Mark your calendars. The most anticipated drops of the season, carefully curated and authenticated by our experts.'}
               </p>
             </div>
@@ -1460,13 +1462,13 @@ export default function App() {
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-zinc-900 uppercase tracking-tight text-center mb-3">
             VERIFIED REVIEWS
           </h2>
-          <p className="text-zinc-600 font-sans font-medium text-[17px] text-center -mt-[5px]">
+          <p className="text-zinc-600 font-sans font-medium text-[17px] text-center mt-0">
             Real feedback from verified collectors and sneaker enthusiasts.
           </p>
         </div>
 
         {/* Rating Summary Pill */}
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 bg-zinc-100/90 border border-zinc-200/80 rounded-full px-6 py-2.5 max-w-fit mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12 bg-zinc-100/90 border border-zinc-200/80 rounded-[2rem] sm:rounded-full px-6 py-3 max-w-fit mx-auto">
           <div className="flex items-center gap-1 text-zinc-900">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-zinc-900 text-zinc-900" />
@@ -1489,7 +1491,7 @@ export default function App() {
       <section className="relative pb-24">
         <div className="flex flex-col items-center justify-center py-16 text-center">
           <h2 className="text-[40px] font-bold text-zinc-900 font-display mb-2 uppercase tracking-wide drop-shadow-sm">@SHOEMANIA ON THE STREETS</h2>
-          <p className="text-zinc-600 font-sans font-medium text-[17px] -mt-[10px] -mb-[15px] drop-shadow-sm">Tag us to be featured.</p>
+          <p className="text-zinc-600 font-sans font-medium text-[17px] mt-0 mb-0 drop-shadow-sm">Tag us to be featured.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 gap-4">
           {[
@@ -1586,7 +1588,7 @@ export default function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-4xl bg-zinc-50/90 backdrop-blur-2xl border border-zinc-200/60 p-6 md:p-10 shadow-2xl rounded-[2.5rem] flex flex-col md:flex-row gap-8 md:gap-12 items-center pointer-events-auto overflow-hidden"
+              className="relative w-full max-w-4xl bg-zinc-50/90 backdrop-blur-2xl border border-zinc-200/60 p-6 md:p-10 shadow-2xl rounded-[2.5rem] flex flex-col md:flex-row gap-8 md:gap-12 items-center pointer-events-auto max-h-[90vh] overflow-y-auto hide-scrollbar"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
@@ -2038,7 +2040,7 @@ export default function App() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 30 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-md bg-zinc-50/90 backdrop-blur-2xl border border-zinc-200/60 shadow-xl rounded-[2rem] sm:rounded-[3rem] flex flex-col overflow-hidden z-[100] text-center"
+              className="relative w-full max-w-md bg-zinc-50/90 backdrop-blur-2xl border border-zinc-200/60 shadow-xl rounded-[2rem] sm:rounded-[3rem] flex flex-col max-h-[90vh] overflow-y-auto hide-scrollbar z-[100] text-center"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="p-6 sm:p-10 flex flex-col items-center">
@@ -2093,7 +2095,7 @@ export default function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-md bg-zinc-50/90 backdrop-blur-2xl border border-zinc-200/60 p-8 shadow-2xl rounded-[2.5rem] flex flex-col items-center pointer-events-auto"
+              className="relative w-full max-w-md bg-zinc-50/90 backdrop-blur-2xl border border-zinc-200/60 p-8 shadow-2xl rounded-[2.5rem] flex flex-col items-center pointer-events-auto max-h-[90vh] overflow-y-auto hide-scrollbar"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
@@ -2300,7 +2302,7 @@ export default function App() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-4xl bg-white/95 backdrop-blur-2xl rounded-[3rem] border border-zinc-200/80 shadow-2xl overflow-hidden z-10 p-6 sm:p-8 md:p-10 my-auto"
+              className="relative w-full max-w-4xl bg-white/95 backdrop-blur-2xl rounded-[3rem] border border-zinc-200/80 shadow-2xl max-h-[90vh] overflow-y-auto hide-scrollbar z-10 p-6 sm:p-8 md:p-10 my-auto"
             >
               <button 
                 onClick={() => setSelectedStreetLook(null)}
