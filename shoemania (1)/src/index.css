@@ -40,3 +40,10 @@ img {
   user-select: none;
   pointer-events: none;
 }
+
+/* Prevent iOS Safari auto-zoom on inputs */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
