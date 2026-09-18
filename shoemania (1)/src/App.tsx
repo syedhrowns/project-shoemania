@@ -611,7 +611,6 @@ export default function App() {
                   </div>
 
                   {/* Minimal Trust Features */}
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-5 text-zinc-500 text-xs sm:text-[13px] font-medium mt-8 pt-[7px] pr-0 mx-auto lg:mx-0 lg:ml-[50px] lg:mr-0 border-t border-[#ffffff] w-full max-w-lg">
                     <div className="flex items-center gap-1.5">
                       <Truck className="w-3.5 h-3.5 text-zinc-800" />
                       <span>Priority Dispatch</span>
@@ -652,7 +651,7 @@ export default function App() {
                   </div>
 
                   {/* Minimal Trust Features */}
-                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-3 gap-x-5 text-zinc-500 text-xs sm:text-[13px] font-medium mt-10 pt-4 border-t border-zinc-100 w-full max-w-lg mx-auto lg:mx-0 lg:ml-12 lg:mr-0">
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-3 gap-x-5 text-zinc-500 text-xs sm:text-[13px] font-medium mt-10 pt-4 border-t border-zinc-100 w-full max-w-lg mx-auto lg:mx-0 ml-[2px]">
                     <div className="flex items-center gap-1.5">
                       <Truck className="w-3.5 h-3.5 text-zinc-800" />
                       <span>Free Shipping</span>
@@ -676,7 +675,7 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-              className="relative block aspect-square sm:aspect-[4/3] lg:aspect-[4/5] xl:aspect-[3/4] max-h-[650px] w-full group mt-6 lg:mt-0"
+              className="relative block h-[450px] w-full group mt-6 lg:mt-0"
             >
               <div className="absolute inset-0 rounded-[3rem] overflow-hidden shadow-md bg-zinc-100 border border-zinc-200/60">
                 {/* Underlying base image to prevent black screen flashes */}
