@@ -351,7 +351,7 @@ export default function App() {
               duration: 0.4, 
               ease: [0.16, 1, 0.3, 1] 
             }}
-            className={`pointer-events-auto w-full h-[64px] sm:h-[70px] rounded-[2rem] sm:rounded-full relative flex flex-wrap sm:flex-nowrap items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`pointer-events-auto w-full h-[65px] rounded-[2rem] sm:rounded-full relative flex flex-wrap sm:flex-nowrap items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isScrolled 
                 ? 'px-4 sm:px-6 py-2 bg-white/85 backdrop-blur-2xl shadow-[0_2px_12px_rgba(15,23,42,0.03)] border border-slate-200/70' 
                 : 'px-5 sm:px-7 py-2 bg-white/75 backdrop-blur-xl shadow-[0_2px_8px_rgba(15,23,42,0.02)] border border-slate-200/50'
@@ -371,7 +371,7 @@ export default function App() {
                 className="flex items-center group focus:outline-none text-left"
                 aria-label="Return to top"
               >
-               <div className="h-[38px] w-[38px] rounded-full bg-black text-white flex items-center justify-center shadow-sm shrink-0 transition-transform duration-200 hover:scale-[1.04] active:scale-[0.96]">
+                <div className="h-[38px] w-[38px] rounded-full bg-black text-white flex items-center justify-center shadow-sm shrink-0 transition-transform duration-200 hover:scale-[1.04] active:scale-[0.96]">
                   <LogoIcon className="w-4 h-4 text-white" />
                 </div>
                 <AnimatePresence initial={false}>
@@ -612,6 +612,7 @@ export default function App() {
                   </div>
 
                   {/* Minimal Trust Features */}
+                  <div className="flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-5 text-zinc-500 text-xs sm:text-[13px] font-medium mt-8 pt-[7px] pr-0 mx-auto lg:mx-0 ml-[2px] border-t border-[#ffffff] w-full max-w-lg">
                     <div className="flex items-center gap-1.5">
                       <Truck className="w-3.5 h-3.5 text-zinc-800" />
                       <span>Priority Dispatch</span>
