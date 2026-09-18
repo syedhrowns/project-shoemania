@@ -337,9 +337,10 @@ export default function App() {
       
 
       {/* Navigation: Floating Responsive Luxury Pill Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-4 sm:py-6 pointer-events-none flex justify-center w-full px-4 sm:px-6">
+      <header id="main-header" className="fixed top-0 left-0 right-0 z-50 py-4 sm:py-6 pointer-events-none flex justify-center w-full px-4 sm:px-6">
         <div className="w-full max-w-[1520px] flex justify-center">
           <motion.nav 
+            id="main-nav"
             ref={navContainerRef}
             initial={false}
             animate={{ 
@@ -350,7 +351,7 @@ export default function App() {
               duration: 0.4, 
               ease: [0.16, 1, 0.3, 1] 
             }}
-            className={`pointer-events-auto w-full min-h-[64px] sm:min-h-[70px] rounded-[2rem] sm:rounded-full relative flex flex-wrap sm:flex-nowrap items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`pointer-events-auto w-full h-[64px] sm:h-[70px] rounded-[2rem] sm:rounded-full relative flex flex-wrap sm:flex-nowrap items-center justify-between transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] ${
               isScrolled 
                 ? 'px-4 sm:px-6 py-2 bg-white/85 backdrop-blur-2xl shadow-[0_2px_12px_rgba(15,23,42,0.03)] border border-slate-200/70' 
                 : 'px-5 sm:px-7 py-2 bg-white/75 backdrop-blur-xl shadow-[0_2px_8px_rgba(15,23,42,0.02)] border border-slate-200/50'
@@ -370,8 +371,8 @@ export default function App() {
                 className="flex items-center group focus:outline-none text-left"
                 aria-label="Return to top"
               >
-                <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-black text-white flex items-center justify-center shadow-sm shrink-0 transition-transform duration-200 hover:scale-[1.04] active:scale-[0.96]">
-                  <LogoIcon className="w-4.5 h-4.5 text-white" />
+               <div className="h-[38px] w-[38px] rounded-full bg-black text-white flex items-center justify-center shadow-sm shrink-0 transition-transform duration-200 hover:scale-[1.04] active:scale-[0.96]">
+                  <LogoIcon className="w-4 h-4 text-white" />
                 </div>
                 <AnimatePresence initial={false}>
                   {!isScrolled && (
@@ -380,7 +381,7 @@ export default function App() {
                       animate={{ 
                         opacity: 1, 
                         width: 'auto', 
-                        marginLeft: 8,
+                        marginLeft: 7,
                         transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
                       }}
                       exit={{ 
@@ -389,7 +390,7 @@ export default function App() {
                         marginLeft: 0,
                         transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
                       }}
-                      className="overflow-hidden font-display font-bold tracking-wider text-[#2c2929] text-lg sm:text-xl whitespace-nowrap hidden sm:inline-block"
+                      className="overflow-hidden font-display font-bold tracking-wider text-[#2c2929] text-base sm:text-lg whitespace-nowrap hidden sm:inline-block mt-[2px]"
                     >
                       SHOEMANIA
                     </motion.span>
@@ -898,7 +899,7 @@ export default function App() {
                     </div>
                   </div>
           
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row items-center gap-6 md:gap-8 md:min-h-[400px] lg:min-h-[550px]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-row items-center justify-center gap-6 md:gap-8 min-h-[480px] sm:min-h-[520px] md:min-h-[580px] lg:min-h-[620px]">
                     {[
                       { name: 'DIOR 1 HIGH', year: '2020', price: '$7,500', bg: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=800' },
                       { name: 'TS DUNK LOW', year: '2020', price: '$2,100', bg: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800' },
@@ -910,7 +911,7 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "0px" }}
                         transition={{ duration: 0.6, delay: 0.2 + (index * 0.1) }}
-                        className="relative w-full h-[300px] sm:h-[360px] md:h-[450px] md:hover:min-h-[400px] lg:min-h-[550px] flex-none md:flex-1 md:hover:flex-[3.5] transition-all duration-700 md:duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-2xl md:rounded-[2rem] overflow-hidden group cursor-pointer shadow-sm md:shadow-none bg-zinc-900 snap-center"
+                        className="relative w-full h-[460px] sm:h-[480px] md:h-[460px] md:hover:h-[540px] lg:h-[480px] lg:hover:h-[580px] flex-none md:flex-1 md:hover:flex-[3.5] transition-all duration-700 md:duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-2xl md:rounded-[2.5rem] overflow-hidden group cursor-pointer shadow-sm md:shadow-none bg-zinc-900 snap-center"
                       >
                         <img 
                           src={grail.bg} 
